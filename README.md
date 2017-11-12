@@ -1,2 +1,2 @@
 # Pung
-A Pong clone written in Pygame.
+A Pong clone made with Pygame.
