@@ -25,3 +25,10 @@ class Sprite:
 
 	def get_height(self):
 		return self.height
+
+	# Bounding box collision
+	def collision(self, sprite):
+		if (self.x + self.width < sprite.x or self.x > sprite.x + sprite.width 
+		or self.y + self.height < sprite.y or self.y > sprite.y + sprite.height):
+			return False
+		return True
