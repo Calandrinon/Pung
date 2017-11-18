@@ -15,6 +15,8 @@ def init():
 
 	player1.set_pos(dist_from_edge, window_height / 2 - player1.get_height() / 2)
 	player2.set_pos(window_width - player2.get_width() - dist_from_edge, window_height / 2 - player2.get_height() / 2)
+	player1.init_score()
+	player2.init_score()
 	ball.reset()
 
 def handle_input():
@@ -45,13 +47,15 @@ def main_loop():
 		current_time = pygame.time.get_ticks()
 		if current_time - start_time > 1000/FPS:
 			start_time = pygame.time.get_ticks()
-			if ball.out_of_boundaries():
+			if ball.out_of_boundaries(player1, player2):
 				ball.reset()
 			ball.move()
 			ball.bounce(player1, player2)
 			screen.fill((0, 0, 0))
 			player1.render(screen)
 			player2.render(screen)
+			player1.render_score(screen)
+			player2.render_score(screen)
 			ball.render(screen)
 			pygame.display.flip()
 

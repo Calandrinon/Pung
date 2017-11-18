@@ -55,10 +55,16 @@ class Ball(Sprite):
 			q = True
 		return q
 
-	def out_of_boundaries(self):
-		if self.x > window_width or self.x < 0:
-			return True
-		return False
+	def out_of_boundaries(self, p1, p2):
+		q = False
+		if self.x > window_width:
+			p1.score.increase()
+			q = True
+
+		if self.x < 0:
+			p2.score.increase()
+			q = True
+		return q
 
 	def bounce(self, p1, p2):
 		if self.collision(p1) or self.collision(p2):
