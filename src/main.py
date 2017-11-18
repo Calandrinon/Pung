@@ -27,22 +27,30 @@ def handle_input():
 	pressed_keys = pygame.key.get_pressed()
 
 	if pressed_keys[pygame.K_w]:
-		player1.move(0, -Player.speed)
+		if player1.y > 0:
+			player1.move(0, -Player.speed)
 	if pressed_keys[pygame.K_s]:
-		player1.move(0, Player.speed)
+		if player1.y < window_height - player1.get_height():
+			player1.move(0, Player.speed)
 	if pressed_keys[pygame.K_UP]:
-		player2.move(0, -Player.speed)
+		if player2.y > 0:
+			player2.move(0, -Player.speed)
 	if pressed_keys[pygame.K_DOWN]:
-		player2.move(0, Player.speed)
+		if player2.y < window_height - player2.get_height():
+			player2.move(0, Player.speed)
 
 	return False
 
 def main_loop():
 	start_time = pygame.time.get_ticks()
-
-	while True:
+	running = True
+	game_is_over = False
+	while running:
 		if handle_input():
-			break
+			running = False
+
+		if game_is_over:
+			continue
 
 		current_time = pygame.time.get_ticks()
 		if current_time - start_time > 1000/FPS:
@@ -59,6 +67,18 @@ def main_loop():
 			player2.render_score(screen)
 			pygame.draw.line(screen, (255, 255, 255), (window_width / 2, 0), (window_width/2, window_height))
 			ball.render(screen)
+			if player1.won():
+				font = pygame.font.SysFont("Comic Sans MS", 50)
+				game_over = font.render("Player 1 won!", False, (5, 165, 62))
+				screen.blit(game_over, (0, window_height/2))
+				game_is_over = True
+
+			elif player2.won():
+				font = pygame.font.SysFont("Comic Sans MS", 50)
+				game_over = font.render("Player 2 won!", False, (5, 165, 62))
+				screen.blit(game_over, (window_width - window_width/4, window_height/2))
+				game_is_over = True
+
 			pygame.display.flip()
 
 	pygame.quit()
