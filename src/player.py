@@ -12,3 +12,8 @@ class Player(Sprite):
 
 	def render_score(self, dest_surface):
 		self.score.render(dest_surface)
+
+	def won(self):
+		if self.score.amount == 10:
+			return True
+		return False
