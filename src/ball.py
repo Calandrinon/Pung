@@ -13,7 +13,7 @@ class Ball(Sprite):
 		self.finish_x = None
 		self.finish_y = None
 		self.set_pos(self.start_x, self.start_y)
-		self.speed = 5
+		self.speed = 7
 
 	def reset(self):
 		self.start_x = window_width / 2 - self.get_width() / 2
@@ -47,11 +47,11 @@ class Ball(Sprite):
 	def touches_side_wall(self):
 		q = False
 		if self.y <= 0:
-			super(Ball, self).move(0, 2)
+			self.set_pos(self.x, 1)
 			q = True
 
 		if self.y >= window_height - super(Ball, self).get_height():
-			super(Ball, self).move(0, -2)
+			self.set_pos(self.x, window_height - super(Ball, self).get_height() - 1)
 			q = True
 		return q
 
