@@ -1,9 +1,10 @@
-import pygame
+import pygame, os
 from player import Player
 from ball import Ball
 from settings import *
 
 def init():
+	os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (20,20)
 	pygame.init()
 	global screen, player1, player2, ball
 	screen = pygame.display.set_mode((window_width, window_height))
