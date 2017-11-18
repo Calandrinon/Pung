@@ -7,7 +7,7 @@ class Score:
         self.y = y
         self.font = font
         self.color = color
-        self.score_font = pygame.font.SysFont(font, 30)
+        self.score_font = pygame.font.SysFont(font, 70)
 
     def increase(self):
         self.amount += 1
