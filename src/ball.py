@@ -57,11 +57,11 @@ class Ball(Sprite):
 
 	def out_of_boundaries(self, p1, p2):
 		q = False
-		if self.x > window_width:
+		if self.x > p2.x:
 			p1.score.increase()
 			q = True
 
-		if self.x < 0:
+		if self.x < p1.x:
 			p2.score.increase()
 			q = True
 		return q
