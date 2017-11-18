@@ -13,7 +13,7 @@ class Ball(Sprite):
 		self.finish_x = None
 		self.finish_y = None
 		self.set_pos(self.start_x, self.start_y)
-		self.speed = 1
+		self.speed = 5
 
 	def reset(self):
 		if random.randint(0, 2) == 1:
@@ -35,5 +35,5 @@ class Ball(Sprite):
 		print(self.finish_x, self.finish_y)
 		print(self.start_x, self.start_y)
 
-	def move_it(self):
+	def move(self):
 		super(Ball, self).set_pos(self.x + self.sign_x * self.speed, self.f(self.x + self.sign_x * self.speed))
