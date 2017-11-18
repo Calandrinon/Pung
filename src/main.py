@@ -56,6 +56,7 @@ def main_loop():
 			player2.render(screen)
 			player1.render_score(screen)
 			player2.render_score(screen)
+			pygame.draw.line(screen, (255, 255, 255), (window_width / 2, 0), (window_width/2, window_height))
 			ball.render(screen)
 			pygame.display.flip()
 
