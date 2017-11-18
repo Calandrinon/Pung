@@ -47,8 +47,9 @@ def main_loop():
 		current_time = pygame.time.get_ticks()
 		if current_time - start_time > 1000/FPS:
 			start_time = pygame.time.get_ticks()
-			if ball.out_of_boundaries(player1, player2):
-				ball.reset()
+			winner = ball.out_of_boundaries(player1, player2)
+			if winner[0]:
+				ball.reset(winner[1])
 			ball.move()
 			ball.bounce(player1, player2)
 			screen.fill((0, 0, 0))

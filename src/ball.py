@@ -15,14 +15,15 @@ class Ball(Sprite):
 		self.set_pos(self.start_x, self.start_y)
 		self.speed = 7
 
-	def reset(self):
+	def reset(self, winner=0):
 		self.start_x = window_width / 2 - self.get_width() / 2
 		self.start_y = window_height / 2 - self.get_height() / 2
 		self.finish_x = None
 		self.finish_y = None
 		self.set_pos(self.start_x, self.start_y)
 
-		if random.randint(0, 2) == 1:
+
+		if random.randint(0, 2) == 1 or winner == 2:
 			self.finish_x = window_width
 			self.sign_x = 1
 		else:
@@ -38,8 +39,6 @@ class Ball(Sprite):
 
 		self.slope = (self.finish_y - self.start_y) / (self.finish_x - self.start_x)
 		self.f = lambda x: self.slope * (self.x - self.finish_x) + self.finish_y
-		print(self.finish_x, self.finish_y)
-		print(self.start_x, self.start_y)
 
 	def move(self):
 		super(Ball, self).set_pos(self.x + self.sign_x * self.speed, self.f(self.x + self.sign_x * self.speed))
@@ -57,14 +56,16 @@ class Ball(Sprite):
 
 	def out_of_boundaries(self, p1, p2):
 		q = False
+		p = 0
 		if self.x > p2.x:
 			p1.score.increase()
 			q = True
-
+			p = 1
 		if self.x < p1.x:
 			p2.score.increase()
 			q = True
-		return q
+			p = 2
+		return (q, p)
 
 	def bounce(self, p1, p2):
 		if self.collision(p1) or self.collision(p2):
