@@ -22,13 +22,20 @@ class Ball(Sprite):
 		self.finish_y = None
 		self.set_pos(self.start_x, self.start_y)
 
-
-		if random.randint(0, 2) == 1 or winner == 2:
-			self.finish_x = window_width
-			self.sign_x = 1
+		if winner == 0:
+			if random.randint(0, 2) == 1:
+				self.finish_x = window_width
+				self.sign_x = 1
+			else:
+				self.finish_x = 0
+				self.sign_x = -1
 		else:
-			self.finish_x = 0
-			self.sign_x = -1
+			if winner == 2:
+				self.finish_x = window_width
+				self.sign_x = 1
+			else:
+				self.finish_x = 0
+				self.sign_x = -1
 
 		finish_y_option1 = random.randint(unit, window_height / 2 - unit)
 		finish_y_option2 = random.randint(window_height / 2 + unit, window_height - unit)
