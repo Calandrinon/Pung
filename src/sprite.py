@@ -1,6 +1,6 @@
 import pygame
 
-class Sprite:
+class Sprite(object):
 	speed = 0.01
 
 	def __init__(self, image_path):
