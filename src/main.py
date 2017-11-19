@@ -7,7 +7,7 @@ def init():
 	os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (20,20)
 	pygame.init()
 	global screen, player1, player2, ball
-	screen = pygame.display.set_mode((window_width, window_height))
+	screen = pygame.display.set_mode((window_width, window_height), pygame.FULLSCREEN)
 	pygame.display.set_caption("Pung")
 	
 	player1 = Player()
@@ -39,7 +39,9 @@ def handle_input():
 	if pressed_keys[pygame.K_DOWN]:
 		if player2.y < window_height - player2.get_height():
 			player2.move(0, Player.speed)
-
+	if pressed_keys[pygame.K_ESCAPE]:
+		return True
+		
 	return False
 
 def main_loop():
