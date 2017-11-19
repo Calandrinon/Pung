@@ -82,12 +82,15 @@ def main_loop():
 				font = pygame.font.SysFont("Comic Sans MS", 50)
 				game_over = font.render("Player 1 won!", False, (5, 165, 62))
 				screen.blit(game_over, (0, window_height/2))
+				screen.blit(font.render("Press ESC to exit", False, (255, 0, 0)), (window_width/2, window_height/2))
 				game_is_over = True
+
 
 			elif player2.won():
 				font = pygame.font.SysFont("Comic Sans MS", 50)
 				game_over = font.render("Player 2 won!", False, (5, 165, 62))
 				screen.blit(game_over, (window_width - window_width/4, window_height/2))
+				screen.blit(font.render("Press ESC to exit", False, (255, 0, 0)), (window_width/2, window_height/2));
 				game_is_over = True
 
 			pygame.display.flip()
