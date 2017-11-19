@@ -41,13 +41,14 @@ def handle_input():
 			player2.move(0, Player.speed)
 	if pressed_keys[pygame.K_ESCAPE]:
 		return True
-		
+
 	return False
 
 def main_loop():
 	start_time = pygame.time.get_ticks()
 	running = True
 	game_is_over = False
+	win_clock = pygame.time.get_ticks()
 	while running:
 		if handle_input():
 			running = False
@@ -60,16 +61,23 @@ def main_loop():
 			start_time = pygame.time.get_ticks()
 			winner = ball.out_of_boundaries(player1, player2)
 			if winner[0]:
+				win_clock = pygame.time.get_ticks()
 				ball.reset(winner[1])
-			ball.move()
-			ball.bounce(player1, player2)
+			
 			screen.fill((0, 0, 0))
+			
+			current_time = pygame.time.get_ticks()
+			if current_time - win_clock > 2000:
+				ball.move()
+				ball.bounce(player1, player2)
+				ball.render(screen)
+
 			player1.render(screen)
 			player2.render(screen)
 			player1.render_score(screen)
 			player2.render_score(screen)
 			pygame.draw.line(screen, (255, 255, 255), (window_width / 2, 0), (window_width/2, window_height))
-			ball.render(screen)
+
 			if player1.won():
 				font = pygame.font.SysFont("Comic Sans MS", 50)
 				game_over = font.render("Player 1 won!", False, (5, 165, 62))
