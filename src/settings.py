@@ -1,4 +1,4 @@
-FPS = 120
+FPS = 90
 window_width = 1100
 window_height = 700
 dist_from_edge = 20
