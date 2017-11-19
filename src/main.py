@@ -16,8 +16,8 @@ def init():
 
 	player1.set_pos(dist_from_edge, window_height / 2 - player1.get_height() / 2)
 	player2.set_pos(window_width - player2.get_width() - dist_from_edge, window_height / 2 - player2.get_height() / 2)
-	player1.init_score()
-	player2.init_score()
+	player1.init_score(window_width / 4, window_height / 16)
+	player2.init_score(window_width - window_width / 4, window_height / 16)
 	ball.reset()
 
 def handle_input():
