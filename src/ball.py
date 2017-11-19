@@ -13,7 +13,7 @@ class Ball(Sprite):
 		self.finish_x = None
 		self.finish_y = None
 		self.set_pos(self.start_x, self.start_y)
-		self.speed = 7
+		self.speed = 12
 
 	def reset(self, winner=0):
 		self.start_x = window_width / 2 - self.get_width() / 2
