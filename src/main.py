@@ -8,7 +8,8 @@ def init():
 	pygame.init()
 	global screen, player1, player2, ball
 	screen = pygame.display.set_mode((window_width, window_height))
-
+	pygame.display.set_caption("Pung")
+	
 	player1 = Player()
 	player2 = Player()
 	ball = Ball()
