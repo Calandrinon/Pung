@@ -8,7 +8,7 @@ class Player(Sprite):
 		super(Player, self).__init__("../res/player.jpg")
 
 	def init_score(self, x, y):
-		self.score = Score(x, y, "Comic Sans MS", (150, 150, 150))
+		self.score = Score(x, y, "Times New Roman", (150, 150, 150))
 
 	def render_score(self, dest_surface):
 		self.score.render(dest_surface)
