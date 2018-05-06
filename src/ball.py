@@ -23,7 +23,7 @@ class Ball(Sprite):
 		self.set_pos(self.start_x, self.start_y)
 
 		if winner == 0:
-			if random.randint(0, 2) == 1:
+			if random.randint(0, 1) == 1:
 				self.finish_x = window_width
 				self.sign_x = 1
 			else:
@@ -39,7 +39,7 @@ class Ball(Sprite):
 
 		finish_y_option1 = random.randint(unit, window_height / 2 - unit)
 		finish_y_option2 = random.randint(window_height / 2 + unit, window_height - unit)
-		if random.randint(0, 2) == 1:
+		if random.randint(0, 1) == 1:
 			self.finish_y = finish_y_option1
 		else:
 			self.finish_y = finish_y_option2
